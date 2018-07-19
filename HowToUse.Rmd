@@ -1,0 +1,7 @@
+---
+title: "Mojang Services"
+---
+
+Running and using this code is very simple, copy and paste it into your editor of choice. Before using it make sure that you have installed the packages at the top,
+if you're using RStudio highlight the first *4* lines and press *ctrl+enter* this will install the packages, you may need to restart your editor. Once this is done
+you're able to use the functions.
