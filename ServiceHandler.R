@@ -1,5 +1,7 @@
 install.packages("httr")
+install.packages("jsonlite")
 library(httr)
+library(jsonlite)
 
 serviceNames <- c("sessionserver.mojang.com", "authserve.mojang.com", "textures.minecraft.net", "api.mojang.com")
 
@@ -25,5 +27,22 @@ updateServer <- function(name, status){
         state = "Cannot retrieve information"
       }
     }
+  }
+}
+
+checkOnline <- function(error, res, body){
+  if(error){
+    print("An error has occured while checking the online status")
+  } else {
+    tryCatch({
+      body = jsonlite::toJSON(body)
+      
+      for(i in body){
+        service <- body[i]
+        if(name = service){
+          updateServer(name, service[name])
+        }
+      }
+    })
   }
 }
