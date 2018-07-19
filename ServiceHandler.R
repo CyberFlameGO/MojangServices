@@ -12,9 +12,9 @@ state <- {
 startTime <- { Sys.time() }
 
 updateServer <- function(name, status){
-  for(in in serviceNames){
-    if(name != name[in]){
-      print("Service name is not valid! ( " + name[in] + ")")
+  for(ii in serviceNames){
+    if(name != name[ii]){
+      print("Service name is not valid! ( " + name[ii] + ")")
     } else {
       status <- ""
       if(GET(name)[status] == "OK"){
