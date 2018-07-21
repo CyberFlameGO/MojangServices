@@ -3,28 +3,26 @@ install.packages("jsonlite")
 library(httr)
 library(jsonlite)
 
-serviceNames <- c("sessionserver.mojang.com", "authserve.mojang.com", "textures.minecraft.net", "api.mojang.com")
-
-state <- {
-  # does nothing yet
-}
+serviceNames <- c("sessionserver.mojang.com", "authserver.mojang.com", "textures.minecraft.net", "api.mojang.com")
 
 startTime <- { Sys.time() }
+
+state <- { "No state defined " + startTime }
 
 updateServer <- function(name, status){
   for(ii in serviceNames){
     if(name != name[ii]){
-      print("Service name is not valid! ( " + name[ii] + ")")
+      print("Service name is not valid! ( " + name[ii] + " )")
     } else {
       status <- ""
       if(GET(name)[status] == "OK"){
-        state = "Online"
+        state = "Online ( " + startTime + " )"
       } else if(GET(name)[status] == "UNSTABLE"){
-        state = "Unstable"
+        state = "Unstable ( " + startTime + " )"
       } else if(GET(name)[status] == "OFFLINE"){
-        state = "Offline"
+        state = "Offline ( " + startTime + " )"
       } else {
-        state = "Cannot retrieve information"
+        state = "Cannot retrieve information ( " + startTime + " )"
       }
     }
   }
